@@ -1056,28 +1056,11 @@
     <p>© 2024 Sylwia Gaża – Wszystkie prawa zastrzeżone</p>
   </footer>
 
-<script>
-  function toggleCategory(header) {
-    const category = header.closest('.category');
-    category.classList.toggle('active');
-  }
-
-  // 🔗 TU WKLEJ SWOJE LINKI DO ZDJĘĆ
-  const productImages = {
-    1: "https://i.ibb.co/bj9KS107/image.png",
-    2: "",
-    3: "",
-
-  };
-
-  function showImage(id) {
-    const url = productImages[id];
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
-    } else {
-      alert(`Zdjęcie produktu nr ${id} nie jest jeszcze dostępne.\nSkontaktuj się z Sylwią Gażą.`);
+ <script>
+    function toggleCategory(header) {
+      const category = header.closest('.category');
+      category.classList.toggle('active');
     }
-  }
-</script>
+  </script>
 </body>
 </html>
