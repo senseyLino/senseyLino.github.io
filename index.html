@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Katalog Kosmetyków Fryzjerskich – Sylwia Gaża</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,30 +13,28 @@
     }
 
     :root {
-      --primary: #252d38;
-      --secondary: #4a5568;
-      --accent: #8b5cf6;
-      --light-bg: #f8fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --hover: #f1f5f9;
-      --text: #1e293b;
+      --primary: #000000;
+      --secondary: #444444;
+      --light: #ffffff;
+      --border: #dddddd;
+      --hover-bg: #fafafa;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f0f4f8 0%, #e6edf5 100%);
-      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+      background: #f9f9f9;
+      color: var(--primary);
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(120deg, var(--primary) 0%, #333f50 100%);
-      padding: 2rem 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      background: var(--light);
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       position: sticky;
       top: 0;
       z-index: 10;
+      border-bottom: 1px solid var(--border);
     }
 
     .header-content {
@@ -49,115 +47,128 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.1rem;
       font-weight: 700;
-      color: white;
+      color: var(--primary);
       letter-spacing: -0.5px;
-      margin-bottom: 0.4rem;
     }
 
     .contact-info {
       font-size: 1.05rem;
-      color: #cbd5e1;
+      color: var(--secondary);
       margin-top: 0.6rem;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .contact-info a {
-      color: #a78bfa;
+      color: var(--primary);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.25s;
+      font-weight: 600;
     }
 
     .contact-info a:hover {
-      color: #c4b5fd;
       text-decoration: underline;
     }
 
     main {
       max-width: 1000px;
-      margin: 2.8rem auto;
+      margin: 2.5rem auto;
       padding: 0 1.5rem;
     }
 
     .category {
-      margin-bottom: 2.4rem;
-      border-radius: 16px;
-      background: var(--card-bg);
-      box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08);
+      margin-bottom: 2rem;
+      border-radius: 12px;
+      background: var(--light);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    .category:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(30, 41, 59, 0.12);
-    }
-
-    .category-header {
-      padding: 1.2rem 1.8rem;
-      background: linear-gradient(to right, var(--primary), #3a4758);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      font-size: 1.35rem;
-      color: white;
-      transition: background 0.3s;
-    }
-
-    .category-header:hover {
-      background: linear-gradient(to right, #2d3748, #4a5568);
-    }
-
-    .category-header::after {
-      content: "▼";
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      transition: transform 0.35s ease;
-    }
-
-    .category.active .category-header::after {
-      transform: rotate(180deg);
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.2rem;
-      padding: 1.6rem 1.8rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s ease;
-    }
-
-    .category.active .products-grid {
-      max-height: 2400px;
-      padding: 1.6rem 1.8rem;
-    }
-
-    .product-card {
-      background: var(--light-bg);
-      border-radius: 14px;
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      font-size: 0.99rem;
-      cursor: pointer;
-      transition: all 0.28s ease;
       border: 1px solid var(--border);
     }
 
+    .category-header {
+      padding: 1.2rem 1.6rem;
+      background: #f8f8f8;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--primary);
+      transition: background 0.25s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .category-header:hover {
+      background: #f0f0f0;
+    }
+
+    .category-header::after {
+      content: "▶";
+      font-size: 1rem;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+    }
+
+    .category.active .category-header::after {
+      transform: rotate(90deg);
+    }
+
+    .products-grid {
+      display: none;
+      padding: 1.5rem 1.6rem;
+      background: var(--light);
+    }
+
+    .category.active .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .product-card {
+      background: var(--light);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
     .product-card:hover {
-      background: white;
-      transform: scale(1.025);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      border-color: var(--accent);
+      background: var(--hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-color: var(--primary);
+    }
+
+    .product-image-placeholder {
+      width: 80px;
+      height: 80px;
+      background: #f0f0f0;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      color: var(--secondary);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      justify-content: center;
     }
 
     .product-number {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--secondary);
       font-weight: 600;
     }
@@ -165,7 +176,8 @@
     .product-name {
       font-weight: 600;
       color: var(--primary);
-      line-height: 1.35;
+      font-size: 0.95rem;
+      line-height: 1.3;
     }
 
     .product-details {
@@ -173,33 +185,40 @@
       justify-content: space-between;
       align-items: center;
       color: var(--secondary);
-      margin-top: 0.25rem;
+      margin-top: 0.2rem;
     }
 
     .product-volume {
-      font-size: 0.93rem;
-      font-weight: 400;
-      color: #4a5568;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     .product-price {
       font-weight: 700;
-      color: var(--accent);
-      font-size: 1.08rem;
+      color: var(--primary);
+      font-size: 1.05rem;
     }
 
     footer {
       text-align: center;
-      padding: 2.5rem 1.5rem 3.2rem;
+      padding: 2.2rem 1.5rem 3rem;
       color: var(--secondary);
-      font-size: 0.98rem;
-      margin-top: 2.8rem;
-      font-weight: 400;
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      font-weight: 500;
     }
 
     @media (max-width: 640px) {
-      .products-grid {
-        grid-template-columns: 1fr;
+      .product-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+
+      .product-image-placeholder {
+        width: 100%;
+        height: 100px;
       }
 
       h1 {
@@ -207,16 +226,8 @@
       }
 
       .category-header {
-        font-size: 1.2rem;
-        padding: 1.1rem 1.4rem;
-      }
-
-      .product-card {
-        padding: 1.1rem;
-      }
-
-      .header-content {
-        padding: 0 1rem;
+        font-size: 1.25rem;
+        padding: 1rem 1.3rem;
       }
     }
   </style>
@@ -236,28 +247,37 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Stylizacja</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(1)">
-          <div class="product-number">1.</div>
-          <div class="product-name">Lakier mocny suchy</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">29 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">1.</div>
+            <div class="product-name">Lakier mocny suchy</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">29 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(2)">
-          <div class="product-number">2.</div>
-          <div class="product-name">Nabłyszczaćz</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">35 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">2.</div>
+            <div class="product-name">Nabłyszczaćz</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">35 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(3)">
-          <div class="product-number">3.</div>
-          <div class="product-name">Gel mousse (pianka)</div>
-          <div class="product-details">
-            <span class="product-volume">300 ml</span>
-            <span class="product-price">38 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">3.</div>
+            <div class="product-name">Gel mousse (pianka)</div>
+            <div class="product-details">
+              <span class="product-volume">300 ml</span>
+              <span class="product-price">38 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -266,164 +286,224 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Pielęgnacja włosów</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(4)">
-          <div class="product-number">4.</div>
-          <div class="product-name">Szampon Hydra (silnie nawilżający)</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">4.</div>
+            <div class="product-name">Szampon Hydra (silnie nawilżający)</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(5)">
-          <div class="product-number">5.</div>
-          <div class="product-name">Hydra Treatment – maska silnie nawilżająca</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">35 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">5.</div>
+            <div class="product-name">Hydra Treatment – maska silnie nawilżająca</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">35 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(6)">
-          <div class="product-number">6.</div>
-          <div class="product-name">Szampon Hydra – szampon silnie nawilżający</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">55 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">6.</div>
+            <div class="product-name">Szampon Hydra – szampon silnie nawilżający</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">55 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(7)">
-          <div class="product-number">7.</div>
-          <div class="product-name">Hydra Treatment – maska silnie nawilżająca</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">60 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">7.</div>
+            <div class="product-name">Hydra Treatment – maska silnie nawilżająca</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">60 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(8)">
-          <div class="product-number">8.</div>
-          <div class="product-name">Szampon PostColor (ochrona koloru)</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">8.</div>
+            <div class="product-name">Szampon PostColor (ochrona koloru)</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(9)">
-          <div class="product-number">9.</div>
-          <div class="product-name">PostColor Treatment – maska do włosów farbowanych</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">35 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">9.</div>
+            <div class="product-name">PostColor Treatment – maska do włosów farbowanych</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">35 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(10)">
-          <div class="product-number">10.</div>
-          <div class="product-name">Szampon PostColor – szampon do włosów farbowanych</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">55 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">10.</div>
+            <div class="product-name">Szampon PostColor – szampon do włosów farbowanych</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">55 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(11)">
-          <div class="product-number">11.</div>
-          <div class="product-name">PostColor Treatment – maska do włosów farbowanych</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">60 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">11.</div>
+            <div class="product-name">PostColor Treatment – maska do włosów farbowanych</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">60 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(12)">
-          <div class="product-number">12.</div>
-          <div class="product-name">Szampon Silk (wygładzenie)</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">12.</div>
+            <div class="product-name">Szampon Silk (wygładzenie)</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(13)">
-          <div class="product-number">13.</div>
-          <div class="product-name">Silk Treatment – maska wygładzająca</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">35 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">13.</div>
+            <div class="product-name">Silk Treatment – maska wygładzająca</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">35 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(14)">
-          <div class="product-number">14.</div>
-          <div class="product-name">Szampon Silk – szampon wygładzający</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">55 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">14.</div>
+            <div class="product-name">Szampon Silk – szampon wygładzający</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">55 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(15)">
-          <div class="product-number">15.</div>
-          <div class="product-name">Silk Treatment – maska wygładzająca</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">60 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">15.</div>
+            <div class="product-name">Silk Treatment – maska wygładzająca</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">60 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(16)">
-          <div class="product-number">16.</div>
-          <div class="product-name">Szampon Daily – do każdego rodzaju włosów</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">57 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">16.</div>
+            <div class="product-name">Szampon Daily – do każdego rodzaju włosów</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">57 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(17)">
-          <div class="product-number">17.</div>
-          <div class="product-name">Szampon Daily (każdy rodzaj włosów)</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">17.</div>
+            <div class="product-name">Szampon Daily (każdy rodzaj włosów)</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(18)">
-          <div class="product-number">18.</div>
-          <div class="product-name">Daily Mask – maska do każdego rodzaju włosów</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">65 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">18.</div>
+            <div class="product-name">Daily Mask – maska do każdego rodzaju włosów</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">65 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(19)">
-          <div class="product-number">19.</div>
-          <div class="product-name">Daily Mask – maska do każdego rodzaju włosów</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">32 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">19.</div>
+            <div class="product-name">Daily Mask – maska do każdego rodzaju włosów</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">32 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(20)">
-          <div class="product-number">20.</div>
-          <div class="product-name">No-Yellow szampon fioletowy</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">60 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">20.</div>
+            <div class="product-name">No-Yellow szampon fioletowy</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">60 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(21)">
-          <div class="product-number">21.</div>
-          <div class="product-name">Thaiti Serum</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">21.</div>
+            <div class="product-name">Thaiti Serum</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(22)">
-          <div class="product-number">22.</div>
-          <div class="product-name">Thaiti Curl</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">22.</div>
+            <div class="product-name">Thaiti Curl</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(23)">
-          <div class="product-number">23.</div>
-          <div class="product-name">Thaiti Oil</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">55 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">23.</div>
+            <div class="product-name">Thaiti Oil</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">55 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -432,60 +512,81 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">System naprawy włosów (rekonstrukcja włosa)</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(24)">
-          <div class="product-number">24.</div>
-          <div class="product-name">Repair Shampoo(S) szampon restrykturyzujący</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">24.</div>
+            <div class="product-name">Repair Shampoo(S) szampon restrykturyzujący</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(25)">
-          <div class="product-number">25.</div>
-          <div class="product-name">Repair Mask(M) maska restrykturyzująca bez spłukiwania</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">65 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">25.</div>
+            <div class="product-name">Repair Mask(M) maska restrykturyzująca bez spłukiwania</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">65 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(26)">
-          <div class="product-number">26.</div>
-          <div class="product-name">Repair Shampoo (1)</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">130 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">26.</div>
+            <div class="product-name">Repair Shampoo (1)</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">130 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(27)">
-          <div class="product-number">27.</div>
-          <div class="product-name">Repair Filler(2)</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">150 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">27.</div>
+            <div class="product-name">Repair Filler(2)</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">150 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(28)">
-          <div class="product-number">28.</div>
-          <div class="product-name">Repair Booster(3)</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">150 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">28.</div>
+            <div class="product-name">Repair Booster(3)</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">150 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(29)">
-          <div class="product-number">29.</div>
-          <div class="product-name">Repair Mask(4)</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">160 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">29.</div>
+            <div class="product-name">Repair Mask(4)</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">160 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(30)">
-          <div class="product-number">30.</div>
-          <div class="product-name">Repair System Zestaw (system naprawy włosów) z ogórecznika</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">580 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">30.</div>
+            <div class="product-name">Repair System Zestaw (system naprawy włosów) z ogórecznika</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">580 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -494,12 +595,15 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Laminacja włosów</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(31)">
-          <div class="product-number">31.</div>
-          <div class="product-name">Lumina Professional System laminacji włosów (zestaw)</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">550 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">31.</div>
+            <div class="product-name">Lumina Professional System laminacji włosów (zestaw)</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">550 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -508,76 +612,103 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Kolorzacja włosów</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(32)">
-          <div class="product-number">32.</div>
-          <div class="product-name">Farba do włosów</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">28 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">32.</div>
+            <div class="product-name">Farba do włosów</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">28 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(33)">
-          <div class="product-number">33.</div>
-          <div class="product-name">Farba bez amoniaku i PPD do włosów</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">33.</div>
+            <div class="product-name">Farba bez amoniaku i PPD do włosów</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(34)">
-          <div class="product-number">34.</div>
-          <div class="product-name">Pigmenty Balaje</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">45 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">34.</div>
+            <div class="product-name">Pigmenty Balaje</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">45 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(35)">
-          <div class="product-number">35.</div>
-          <div class="product-name">Oxy Cream (utleniacze) 2,1%; 3%; 6%; 9%; 12%</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">27 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">35.</div>
+            <div class="product-name">Oxy Cream (utleniacze) 2,1%; 3%; 6%; 9%; 12%</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">27 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(36)">
-          <div class="product-number">36.</div>
-          <div class="product-name">Rozjaśniacz w kremie</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">40 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">36.</div>
+            <div class="product-name">Rozjaśniacz w kremie</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">40 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(37)">
-          <div class="product-number">37.</div>
-          <div class="product-name">Rozjaśniacz Blue, Silver, White</div>
-          <div class="product-details">
-            <span class="product-volume">500 g</span>
-            <span class="product-price">45 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">37.</div>
+            <div class="product-name">Rozjaśniacz Blue, Silver, White</div>
+            <div class="product-details">
+              <span class="product-volume">500 g</span>
+              <span class="product-price">45 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(38)">
-          <div class="product-number">38.</div>
-          <div class="product-name">Evoilution (dodatek do koloryzacji)</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">300 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">38.</div>
+            <div class="product-name">Evoilution (dodatek do koloryzacji)</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">300 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(39)">
-          <div class="product-number">39.</div>
-          <div class="product-name">Miseczka fryzjerska do farbowania</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">5 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">39.</div>
+            <div class="product-name">Miseczka fryzjerska do farbowania</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">5 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(40)">
-          <div class="product-number">40.</div>
-          <div class="product-name">Pędzelek do farbowania</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">4 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">40.</div>
+            <div class="product-name">Pędzelek do farbowania</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">4 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -586,92 +717,125 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Cennik Luxury – Pielęgnacja i regeneracja</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(41)">
-          <div class="product-number">41.</div>
-          <div class="product-name">Pro Color Care Shampoo – szampon chroniący i odżywiający kolor</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">45 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">41.</div>
+            <div class="product-name">Pro Color Care Shampoo – szampon chroniący i odżywiający kolor</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">45 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(42)">
-          <div class="product-number">42.</div>
-          <div class="product-name">Pro Color Care Shampoo – szampon chroniący i odżywiający kolor</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">42.</div>
+            <div class="product-name">Pro Color Care Shampoo – szampon chroniący i odżywiający kolor</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(43)">
-          <div class="product-number">43.</div>
-          <div class="product-name">Volumizing Shampoo – szampon zwiększający objętość</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">43.</div>
+            <div class="product-name">Volumizing Shampoo – szampon zwiększający objętość</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(44)">
-          <div class="product-number">44.</div>
-          <div class="product-name">Volumizing Shampoo – szampon zwiększający objętość</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">44.</div>
+            <div class="product-name">Volumizing Shampoo – szampon zwiększający objętość</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(45)">
-          <div class="product-number">45.</div>
-          <div class="product-name">Extreme Liss Luxury Smooth – mleczko wygładzająco-ochronne (termoochrona)</div>
-          <div class="product-details">
-            <span class="product-volume">250 ml</span>
-            <span class="product-price">38 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">45.</div>
+            <div class="product-name">Extreme Liss Luxury Smooth – mleczko wygładzająco-ochronne (termoochrona)</div>
+            <div class="product-details">
+              <span class="product-volume">250 ml</span>
+              <span class="product-price">38 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(46)">
-          <div class="product-number">46.</div>
-          <div class="product-name">Day by Day Adaptive Mask – maska dostosowująca się do wszystkich rodzajów włosów</div>
-          <div class="product-details">
-            <span class="product-volume">400 ml</span>
-            <span class="product-price">47 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">46.</div>
+            <div class="product-name">Day by Day Adaptive Mask – maska dostosowująca się do wszystkich rodzajów włosów</div>
+            <div class="product-details">
+              <span class="product-volume">400 ml</span>
+              <span class="product-price">47 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(47)">
-          <div class="product-number">47.</div>
-          <div class="product-name">Back Bar Moisturizing Shampoo – szampon delikatnie oczyszczający</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">45 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">47.</div>
+            <div class="product-name">Back Bar Moisturizing Shampoo – szampon delikatnie oczyszczający</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">45 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(48)">
-          <div class="product-number">48.</div>
-          <div class="product-name">Back Bar Moisturizing Mask – maska delikatnie oczyszczająca</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">48.</div>
+            <div class="product-name">Back Bar Moisturizing Mask – maska delikatnie oczyszczająca</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(49)">
-          <div class="product-number">49.</div>
-          <div class="product-name">LuxuryPro Wcierka ziołowa do włosów Relive wzmacniająca</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">49.</div>
+            <div class="product-name">LuxuryPro Wcierka ziołowa do włosów Relive wzmacniająca</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(50)">
-          <div class="product-number">50.</div>
-          <div class="product-name">LuxuryPro Serum do brody z olejkiem konopnym</div>
-          <div class="product-details">
-            <span class="product-volume">50 ml</span>
-            <span class="product-price">47 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">50.</div>
+            <div class="product-name">LuxuryPro Serum do brody z olejkiem konopnym</div>
+            <div class="product-details">
+              <span class="product-volume">50 ml</span>
+              <span class="product-price">47 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(51)">
-          <div class="product-number">51.</div>
-          <div class="product-name">No-Yellow Shampoo – szampon fioletowy</div>
-          <div class="product-details">
-            <span class="product-volume">500 ml</span>
-            <span class="product-price">43 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">51.</div>
+            <div class="product-name">No-Yellow Shampoo – szampon fioletowy</div>
+            <div class="product-details">
+              <span class="product-volume">500 ml</span>
+              <span class="product-price">43 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -680,36 +844,48 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Cennik Luxury – Kolorzacja</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(52)">
-          <div class="product-number">52.</div>
-          <div class="product-name">Farba Luxury</div>
-          <div class="product-details">
-            <span class="product-volume">100 ml</span>
-            <span class="product-price">30 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">52.</div>
+            <div class="product-name">Farba Luxury</div>
+            <div class="product-details">
+              <span class="product-volume">100 ml</span>
+              <span class="product-price">30 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(53)">
-          <div class="product-number">53.</div>
-          <div class="product-name">Utleniacz</div>
-          <div class="product-details">
-            <span class="product-volume">1000 ml</span>
-            <span class="product-price">27 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">53.</div>
+            <div class="product-name">Utleniacz</div>
+            <div class="product-details">
+              <span class="product-volume">1000 ml</span>
+              <span class="product-price">27 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(54)">
-          <div class="product-number">54.</div>
-          <div class="product-name">Color Service Potion 3 in 1 – eliksir do koloryzacji</div>
-          <div class="product-details">
-            <span class="product-volume">400 ml</span>
-            <span class="product-price">69 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">54.</div>
+            <div class="product-name">Color Service Potion 3 in 1 – eliksir do koloryzacji</div>
+            <div class="product-details">
+              <span class="product-volume">400 ml</span>
+              <span class="product-price">69 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(55)">
-          <div class="product-number">55.</div>
-          <div class="product-name">Reflex Color Mask – maska kolorująca</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">49 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">55.</div>
+            <div class="product-name">Reflex Color Mask – maska kolorująca</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">49 zł</span>
+            </div>
           </div>
         </div>
       </div>
@@ -718,116 +894,158 @@
     <div class="category">
       <div class="category-header" onclick="toggleCategory(this)">Dodatki i akcesoria</div>
       <div class="products-grid">
-        <div class="product-card" onclick="showImage(56)">
-          <div class="product-number">56.</div>
-          <div class="product-name">Keune Nabłyszczaćz</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">29 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">56.</div>
+            <div class="product-name">Keune Nabłyszczaćz</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">29 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(57)">
-          <div class="product-number">57.</div>
-          <div class="product-name">Phytorelax Cristalli Liquidi – kryształki do laminacji włosów</div>
-          <div class="product-details">
-            <span class="product-volume">50 ml</span>
-            <span class="product-price">35 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">57.</div>
+            <div class="product-name">Phytorelax Cristalli Liquidi – kryształki do laminacji włosów</div>
+            <div class="product-details">
+              <span class="product-volume">50 ml</span>
+              <span class="product-price">35 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(58)">
-          <div class="product-number">58.</div>
-          <div class="product-name">MAGMARI Lakier</div>
-          <div class="product-details">
-            <span class="product-volume">750 ml</span>
-            <span class="product-price">38 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">58.</div>
+            <div class="product-name">MAGMARI Lakier</div>
+            <div class="product-details">
+              <span class="product-volume">750 ml</span>
+              <span class="product-price">38 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(59)">
-          <div class="product-number">59.</div>
-          <div class="product-name">MAGMARI Termoochrona</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">29 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">59.</div>
+            <div class="product-name">MAGMARI Termoochrona</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">29 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(60)">
-          <div class="product-number">60.</div>
-          <div class="product-name">MAGMARI Volume</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">29 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">60.</div>
+            <div class="product-name">MAGMARI Volume</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">29 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(61)">
-          <div class="product-number">61.</div>
-          <div class="product-name">MAGMARI do zmywania farby</div>
-          <div class="product-details">
-            <span class="product-volume">200 ml</span>
-            <span class="product-price">22 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">61.</div>
+            <div class="product-name">MAGMARI do zmywania farby</div>
+            <div class="product-details">
+              <span class="product-volume">200 ml</span>
+              <span class="product-price">22 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(62)">
-          <div class="product-number">62.</div>
-          <div class="product-name">Chusteczki Frutti do zmywania farby</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">26 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">62.</div>
+            <div class="product-name">Chusteczki Frutti do zmywania farby</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">26 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(63)">
-          <div class="product-number">63.</div>
-          <div class="product-name">Luxury Mossa Bio-trwała – zestaw do trwałej ondulacji</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">47 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">63.</div>
+            <div class="product-name">Luxury Mossa Bio-trwała – zestaw do trwałej ondulacji</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">47 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(64)">
-          <div class="product-number">64.</div>
-          <div class="product-name">Peleryny do farbowania grube</div>
-          <div class="product-details">
-            <span class="product-volume">30 szt.</span>
-            <span class="product-price">22 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">64.</div>
+            <div class="product-name">Peleryny do farbowania grube</div>
+            <div class="product-details">
+              <span class="product-volume">30 szt.</span>
+              <span class="product-price">22 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(65)">
-          <div class="product-number">65.</div>
-          <div class="product-name">Folia aluminiowa</div>
-          <div class="product-details">
-            <span class="product-volume">250 m</span>
-            <span class="product-price">39 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">65.</div>
+            <div class="product-name">Folia aluminiowa</div>
+            <div class="product-details">
+              <span class="product-volume">250 m</span>
+              <span class="product-price">39 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(66)">
-          <div class="product-number">66.</div>
-          <div class="product-name">Pojemnik na peleryny do farbowania</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">150 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">66.</div>
+            <div class="product-name">Pojemnik na peleryny do farbowania</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">150 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(67)">
-          <div class="product-number">67.</div>
-          <div class="product-name">Rękawiczki</div>
-          <div class="product-details">
-            <span class="product-volume">100 szt.</span>
-            <span class="product-price">16 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">67.</div>
+            <div class="product-name">Rękawiczki</div>
+            <div class="product-details">
+              <span class="product-volume">100 szt.</span>
+              <span class="product-price">16 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(68)">
-          <div class="product-number">68.</div>
-          <div class="product-name">Ręczniki jednorazowe włóknina</div>
-          <div class="product-details">
-            <span class="product-volume">100 szt.</span>
-            <span class="product-price">36 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">68.</div>
+            <div class="product-name">Ręczniki jednorazowe włóknina</div>
+            <div class="product-details">
+              <span class="product-volume">100 szt.</span>
+              <span class="product-price">36 zł</span>
+            </div>
           </div>
         </div>
-        <div class="product-card" onclick="showImage(69)">
-          <div class="product-number">69.</div>
-          <div class="product-name">Ręczniki na rolce celuloza</div>
-          <div class="product-details">
-            <span class="product-volume">—</span>
-            <span class="product-price">10 zł</span>
+        <div class="product-card">
+          <div class="product-image-placeholder">Zdjęcie<br>produktu</div>
+          <div class="product-info">
+            <div class="product-number">69.</div>
+            <div class="product-name">Ręczniki na rolce celuloza</div>
+            <div class="product-details">
+              <span class="product-volume">—</span>
+              <span class="product-price">10 zł</span>
+            </div>
           </div>
         </div>
       </div>
