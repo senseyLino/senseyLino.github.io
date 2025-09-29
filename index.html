@@ -838,15 +838,28 @@
     <p>© 2024 Sylwia Gaża – Wszystkie prawa zastrzeżone</p>
   </footer>
 
-  <script>
-    function toggleCategory(header) {
-      const category = header.closest('.category');
-      category.classList.toggle('active');
-    }
+<script>
+  function toggleCategory(header) {
+    const category = header.closest('.category');
+    category.classList.toggle('active');
+  }
 
-    function showImage(id) {
-      alert(`Zdjęcie produktu nr ${id} zostanie wkrótce dodane.\nSkontaktuj się z Sylwią Gażą, aby uzyskać więcej informacji.`);
+  // 🔗 TU WKLEJ SWOJE LINKI DO ZDJĘĆ
+  const productImages = {
+    1: "",
+    2: "",
+    3: "",
+
+  };
+
+  function showImage(id) {
+    const url = productImages[id];
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      alert(`Zdjęcie produktu nr ${id} nie jest jeszcze dostępne.\nSkontaktuj się z Sylwią Gażą.`);
     }
-  </script>
+  }
+</script>
 </body>
 </html>
