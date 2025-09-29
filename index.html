@@ -4,184 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Katalog Kosmetyków Fryzjerskich – Sylwia Gaża</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fafafa;
-      color: #111827;
-      line-height: 1.5;
-    }
-
-    header {
-      background: white;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    .contact-info {
-      font-size: 0.95rem;
-      color: #4b5563;
-      margin-top: 0.25rem;
-    }
-
-    .contact-info a {
-      color: #3b82f6;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .category {
-      margin-bottom: 2rem;
-      border-radius: 12px;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      overflow: hidden;
-    }
-
-    .category-header {
-      padding: 1rem 1.5rem;
-      background: #f9fafb;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.25rem;
-      color: #1f2937;
-      transition: background 0.2s;
-    }
-
-    .category-header:hover {
-      background: #f3f4f6;
-    }
-
-    .category-header::after {
-      content: "▼";
-      font-size: 0.8rem;
-      color: #6b7280;
-      transition: transform 0.3s;
-    }
-
-    .category.active .category-header::after {
-      transform: rotate(180deg);
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-    }
-
-    .category.active .products-grid {
-      max-height: 2000px;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .product-card {
-      background: #fafafa;
-      border-radius: 10px;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .product-card:hover {
-      background: #f3f4f6;
-    }
-
-    .product-number {
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    .product-name {
-      font-weight: 500;
-      color: #111827;
-    }
-
-    .product-details {
-      display: flex;
-      justify-content: space-between;
-      color: #4b5563;
-    }
-
-    .product-volume {
-      font-size: 0.9rem;
-    }
-
-    .product-price {
-      font-weight: 600;
-      color: #1f2937;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1.5rem 3rem;
-      color: #6b7280;
-      font-size: 0.9rem;
-      border-top: 1px solid #e5e7eb;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 640px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 1.4rem;
-      }
-
-      .category-header {
-        font-size: 1.15rem;
-        padding: 0.9rem 1.25rem;
-      }
-
-      .product-card {
-        padding: 0.9rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Katalog Kosmetyków Fryzjerskich</h1>
-    <div class="contact-info">
-      Sylwia Gaża | Tel: +48 452 477 250 | 
-      <a href="mailto:sylwiawehair@gmail.com">sylwiawehair@gmail.com</a>
+    <div class="header-content">
+      <h1>Katalog Kosmetyków Fryzjerskich</h1>
+      <div class="contact-info">
+        Sylwia Gaża | Tel: +48 452 477 250 | 
+        <a href="mailto:sylwiawehair@gmail.com">sylwiawehair@gmail.com</a>
+      </div>
     </div>
   </header>
 
@@ -790,16 +623,29 @@
   <footer>
     <p>© 2024 Sylwia Gaża – Wszystkie prawa zastrzeżone</p>
   </footer>
+  
+<script>
+  function toggleCategory(header) {
+    const category = header.closest('.category');
+    category.classList.toggle('active');
+  }
 
-  <script>
-    function toggleCategory(header) {
-      const category = header.closest('.category');
-      category.classList.toggle('active');
-    }
+  // 🔗 TU WKLEJ SWOJE LINKI DO ZDJĘĆ
+  const productImages = {
+    1: "",
+    2: "",
+    3: "",
 
-    function showImage(id) {
-      alert(`Zdjęcie produktu nr ${id} zostanie wkrótce dodane.\nSkontaktuj się z Sylwią Gażą, aby uzyskać więcej informacji.`);
+  };
+
+  function showImage(id) {
+    const url = productImages[id];
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      alert(`Zdjęcie produktu nr ${id} nie jest jeszcze dostępne.\nSkontaktuj się z Sylwią Gażą.`);
     }
-  </script>
+  }
+</script>
 </body>
 </html>
