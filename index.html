@@ -610,7 +610,7 @@
           <div class="product-number">30.</div>
           <div class="product-name">Repair System Zestaw (system naprawy włosów) z ogórecznika</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">580 zł</span>
           </div>
         </div>
@@ -624,7 +624,7 @@
           <div class="product-number">31.</div>
           <div class="product-name">Lumina Professional System laminacji włosów (zestaw)</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">550 zł</span>
           </div>
         </div>
@@ -694,7 +694,7 @@
           <div class="product-number">39.</div>
           <div class="product-name">Miseczka fryzjerska do farbowania</div>
           <div class="product-details">
-            <span class="product-volume">1<span>
+            <span class="product-volume">—</span>
             <span class="product-price">5 zł</span>
           </div>
         </div>
@@ -702,7 +702,7 @@
           <div class="product-number">40.</div>
           <div class="product-name">Pędzelek do farbowania</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">4 zł</span>
           </div>
         </div>
@@ -896,7 +896,7 @@
           <div class="product-number">62.</div>
           <div class="product-name">Chusteczki Frutti do zmywania farby</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">26 zł</span>
           </div>
         </div>
@@ -904,7 +904,7 @@
           <div class="product-number">63.</div>
           <div class="product-name">Luxury Mossa Bio-trwała – zestaw do trwałej ondulacji</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">47 zł</span>
           </div>
         </div>
@@ -928,7 +928,7 @@
           <div class="product-number">66.</div>
           <div class="product-name">Pojemnik na peleryny do farbowania</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">150 zł</span>
           </div>
         </div>
@@ -952,7 +952,7 @@
           <div class="product-number">69.</div>
           <div class="product-name">Ręczniki na rolce celuloza</div>
           <div class="product-details">
-            <span class="product-volume"></span>
+            <span class="product-volume">—</span>
             <span class="product-price">10 zł</span>
           </div>
         </div>
@@ -976,8 +976,8 @@
         <div class="modal-info" id="modalProductInfo">Pojemność • Cena</div>
       </div>
       <div class="modal-footer">
-        <button class="modal-btn" id="prevBtn" onclick="prevNavigation()">&#8249;</button>
-        <button class="modal-btn" id="nextBtn" onclick="nextNavigation()">&#8250;</button>
+        <button class="modal-btn" id="prevBtn" onclick="prevImage()" disabled>&#8249;</button>
+        <button class="modal-btn" id="nextBtn" onclick="nextImage()" disabled>&#8250;</button>
       </div>
       <button class="modal-close" onclick="closeModal()">&times;</button>
     </div>
@@ -988,10 +988,10 @@
   </footer>
 
   <script>
-    // Mock data structure - in real implementation you would have actual image URLs
+    // Mock data structure - each product can have multiple images
     const products = {
-      1: { name: 'Lakier mocny suchy', volume: '500 ml', price: '29 zł', images: ['https://i.ibb.co/jkv59FXQ/image.png'] },
-      2: { name: 'Nabłyszczaćz', volume: '200 ml', price: '35 zł', images: ['https://i.ibb.co/Y4kbstLC/fab76ba385d15d31daf5c231e682ef68.jpg', 'https://i.ibb.co/Y4kbstLC/fab76ba385d15d31daf5c231e682ef68.jpg'] },
+      1: { name: 'Lakier mocny suchy', volume: '500 ml', price: '29 zł', images: ['img1'] },
+      2: { name: 'Nabłyszczaćz', volume: '200 ml', price: '35 zł', images: ['img1', 'img2'] },
       3: { name: 'Gel mousse (pianka)', volume: '300 ml', price: '38 zł', images: ['img1'] },
       4: { name: 'Szampon Hydra (silnie nawilżający)', volume: '250 ml', price: '30 zł', images: ['img1'] },
       5: { name: 'Hydra Treatment – maska silnie nawilżająca', volume: '250 ml', price: '35 zł', images: ['img1'] },
@@ -1061,7 +1061,7 @@
       69: { name: 'Ręczniki na rolce celuloza', volume: '—', price: '10 zł', images: ['img1'] }
     };
 
-    let currentProductId = 1;
+    let currentProductId = null;
     let currentImageIndex = 0;
 
     function toggleCategory(header) {
@@ -1081,34 +1081,25 @@
     function closeModal() {
       document.getElementById('imageModal').classList.remove('active');
       document.body.style.overflow = 'auto';
+      currentProductId = null;
+      currentImageIndex = 0;
     }
 
-    function nextNavigation() {
+    function nextImage() {
       const product = products[currentProductId];
-      if (product.images.length > 1 && currentImageIndex < product.images.length - 1) {
-        // Navigate to next image in current product
+      if (currentImageIndex < product.images.length - 1) {
         currentImageIndex++;
-      } else if (currentProductId < Object.keys(products).length) {
-        // Navigate to next product
-        currentProductId++;
-        currentImageIndex = 0;
+        updateModalContent();
+        updateNavigationButtons();
       }
-      updateModalContent();
-      updateNavigationButtons();
     }
 
-    function prevNavigation() {
+    function prevImage() {
       if (currentImageIndex > 0) {
-        // Navigate to previous image in current product
         currentImageIndex--;
-      } else if (currentProductId > 1) {
-        // Navigate to previous product
-        currentProductId--;
-        const prevProduct = products[currentProductId];
-        currentImageIndex = prevProduct.images.length - 1;
+        updateModalContent();
+        updateNavigationButtons();
       }
-      updateModalContent();
-      updateNavigationButtons();
     }
 
     function updateModalContent() {
@@ -1147,13 +1138,16 @@ imgElement.alt = product.name;
 
     function updateNavigationButtons() {
       const product = products[currentProductId];
-      const totalProducts = Object.keys(products).length;
+      const hasMultipleImages = product.images.length > 1;
       
-      // Previous button
-      document.getElementById('prevBtn').disabled = (currentProductId === 1 && currentImageIndex === 0);
+      // Image navigation buttons
+      document.getElementById('prevBtn').disabled = currentImageIndex === 0 || !hasMultipleImages;
+      document.getElementById('nextBtn').disabled = currentImageIndex >= product.images.length - 1 || !hasMultipleImages;
       
-      // Next button
-      document.getElementById('nextBtn').disabled = (currentProductId === totalProducts && currentImageIndex === product.images.length - 1);
+      // Hide image navigation if only one image
+      const imageNavVisible = hasMultipleImages;
+      document.getElementById('prevBtn').style.display = imageNavVisible ? 'flex' : 'none';
+      document.getElementById('nextBtn').style.display = imageNavVisible ? 'flex' : 'none';
     }
 
     // Close modal when clicking outside
@@ -1170,9 +1164,9 @@ imgElement.alt = product.name;
       if (e.key === 'Escape') {
         closeModal();
       } else if (e.key === 'ArrowLeft') {
-        prevNavigation();
+        prevImage();
       } else if (e.key === 'ArrowRight') {
-        nextNavigation();
+        nextImage();
       }
     });
   </script>
