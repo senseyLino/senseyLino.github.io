@@ -1102,17 +1102,39 @@
       }
     }
 
-    function updateModalContent() {
-      const product = products[currentProductId];
-      document.getElementById('modalProductName').textContent = product.name;
-      document.getElementById('modalProductInfo').textContent = `${product.volume} • ${product.price}`;
-      
-      const imageCount = product.images.length;
-      if (imageCount > 1) {
-        document.getElementById('imageCounter').textContent = `Zdjęcie ${currentImageIndex + 1} z ${imageCount}`;
-      } else {
-        document.getElementById('imageCounter').textContent = '';
-      }
+function updateModalContent() {
+  const product = products[currentProductId];
+  document.getElementById('modalProductName').textContent = product.name;
+  document.getElementById('modalProductInfo').textContent = `${product.volume} • ${product.price}`;
+
+  const imageCount = product.images.length;
+  if (imageCount > 1) {
+    document.getElementById('imageCounter').textContent = `Zdjęcie ${currentImageIndex + 1} z ${imageCount}`;
+  } else {
+    document.getElementById('imageCounter').textContent = '';
+  }
+
+  // ✅ USUŃ STARY OBRAZEK (jeśli istnieje)
+  const existingImg = document.getElementById('modalImage');
+  if (existingImg) {
+    existingImg.remove();
+  }
+
+  // ✅ UKRYJ PLACEHOLDER
+  document.getElementById('modalImagePlaceholder').style.display = 'none';
+
+  // ✅ DODAJ NOWY OBRAZEK
+  const img = document.createElement('img');
+  img.id = 'modalImage';
+  img.src = product.images[currentImageIndex];
+  img.alt = product.name;
+  img.style.maxWidth = '100%';
+  img.style.maxHeight = '100%';
+  img.style.objectFit = 'contain';
+
+  // ✅ WSTAW GO DO KONTENERA
+  document.querySelector('.modal-image-container').appendChild(img);
+}
       
       // In real implementation, you would display actual images
       // For now, we show placeholder text with current image info
