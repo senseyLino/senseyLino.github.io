@@ -1091,36 +1091,16 @@
         document.getElementById('imageCounter').textContent = '';
       }
       
-      function updateModalContent() {
-  const product = products[currentProductId];
-  document.getElementById('modalProductName').textContent = product.name;
-  document.getElementById('modalProductInfo').textContent = `${product.volume} • ${product.price}`;
-  const imageCount = product.images.length;
-  if (imageCount > 1) {
-    document.getElementById('imageCounter').textContent = `Zdjęcie ${currentImageIndex + 1} z ${imageCount}`;
-  } else {
-    document.getElementById('imageCounter').textContent = '';
-  }
-
-  // ✅ UKRYJ PLACEHOLDER
-  document.getElementById('modalImagePlaceholder').style.display = 'none';
-
-  // ✅ USUŃ STARE ZDJĘCIE (jeśli istnieje)
-  const existingImg = document.querySelector('.modal-image-container img');
-  if (existingImg) {
-    existingImg.remove();
-  }
-
-  // ✅ DODAJ NOWE ZDJĘCIE
-  const img = document.createElement('img');
-  img.src = product.images[currentImageIndex];
-  img.alt = product.name;
-  img.style.maxWidth = '100%';
-  img.style.maxHeight = '100%';
-  img.style.objectFit = 'contain';
-
-  document.querySelector('.modal-image-container').appendChild(img);
-}
+      const modalImage = document.getElementById('modalImagePlaceholder');
+      modalImage.innerHTML = `Zdjęcie produktu nr ${id}<br>
+        ${imageCount > 1 ? `(Zdjęcie ${currentImageIndex + 1} z ${imageCount})` : ''}<br>
+        <br>
+        (Zdjęcia zostaną dodane wkrótce)`;
+      
+      document.getElementById('imageModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updateNavigationButtons();
+    }
 
     function closeModal() {
       document.getElementById('imageModal').classList.remove('active');
@@ -1151,35 +1131,21 @@
     }
 
     function updateModalContent() {
-  const product = products[currentProductId];
-  document.getElementById('modalProductName').textContent = product.name;
-  document.getElementById('modalProductInfo').textContent = `${product.volume} • ${product.price}`;
-  const imageCount = product.images.length;
-  if (imageCount > 1) {
-    document.getElementById('imageCounter').textContent = `Zdjęcie ${currentImageIndex + 1} z ${imageCount}`;
-  } else {
-    document.getElementById('imageCounter').textContent = '';
-  }
-
-  // Ukryj placeholder
-  document.getElementById('modalImagePlaceholder').style.display = 'none';
-
-  // Stwórz lub zaktualizuj element <img>
-  let imgElement = document.querySelector('#modalImageContainer img');
-  if (!imgElement) {
-    imgElement = document.createElement('img');
-    imgElement.id = 'modalImage';
-    imgElement.style.maxWidth = '100%';
-    imgElement.style.maxHeight = '100%';
-    imgElement.style.objectFit = 'contain';
-    document.querySelector('.modal-image-container').appendChild(imgElement);
-  }
-
-  // Ustaw źródło zdjęcia
-  const imageUrl = product.images[currentImageIndex];
-  imgElement.src = imageUrl;
-  imgElement.alt = product.name;
-}
+      const product = products[currentProductId];
+      const imageCount = product.images;
+      
+      if (imageCount > 1) {
+        document.getElementById('imageCounter').textContent = `Zdjęcie ${currentImageIndex + 1} z ${imageCount}`;
+      } else {
+        document.getElementById('imageCounter').textContent = '';
+      }
+      
+      const modalImage = document.getElementById('modalImagePlaceholder');
+      modalImage.innerHTML = `Zdjęcie produktu nr ${currentProductId}<br>
+        ${imageCount > 1 ? `(Zdjęcie ${currentImageIndex + 1} z ${imageCount})` : ''}<br>
+        <br>
+        (Zdjęcia zostaną dodane wkrótce)`;
+    }
 
     function updateNavigationButtons() {
       if (!currentProductId) return;
