@@ -1125,11 +1125,24 @@
       
       // In real implementation, you would display actual images
       // For now, we show placeholder text with current image info
-      const modalImage = document.getElementById('modalImagePlaceholder');
-      modalImage.innerHTML = `Zdjęcie produktu nr ${currentProductId}<br>
-        ${imageCount > 1 ? `(Zdjęcie ${currentImageIndex + 1} z ${imageCount})` : ''}<br>
-        <br>
-        (Zdjęcia zostaną dodane wkrótce)`;
+// Ukryj placeholder
+document.getElementById('modalImagePlaceholder').style.display = 'none';
+
+// Stwórz lub zaktualizuj element <img>
+let imgElement = document.querySelector('#modalImageContainer img');
+if (!imgElement) {
+  imgElement = document.createElement('img');
+  imgElement.id = 'modalImage';
+  imgElement.style.maxWidth = '100%';
+  imgElement.style.maxHeight = '100%';
+  imgElement.style.objectFit = 'contain';
+  document.querySelector('.modal-image-container').appendChild(imgElement);
+}
+
+// Ustaw źródło zdjęcia
+const imageUrl = product.images[currentImageIndex];
+imgElement.src = imageUrl;
+imgElement.alt = product.name;
     }
 
     function updateNavigationButtons() {
